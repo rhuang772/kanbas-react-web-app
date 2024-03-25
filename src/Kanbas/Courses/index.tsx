@@ -1,11 +1,10 @@
-import { courses } from "../../Kanbas/Database";
 import { Navigate, Route, Routes, useParams, useLocation } from "react-router-dom"
 import { HiMiniBars3, HiArrowRight } from "react-icons/hi2"
 import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
-function Courses() {
+function Courses({ courses }: { courses: any[]; }) {
     const style = {color: "red", fontSize: "25px", paddingTop: "10px"};
     const locationStyle = {color: "black"};
     const moduleStyle:React.CSSProperties = { position: "fixed", overflowY: "scroll", top: "100px", left: "320px", bottom: "0px", right: "0px" };
@@ -15,9 +14,8 @@ function Courses() {
     const course = courses.find((course) => course._id === courseId);
     return (
         <div className = "container-fluid">
-            <h1 className="d-none d-sm-block" style={style}>&nbsp;&nbsp;&nbsp;<HiMiniBars3 />&nbsp;&nbsp;&nbsp;{course?.name}&nbsp;&nbsp;&nbsp;<HiArrowRight />&nbsp;&nbsp;&nbsp;<span style={locationStyle}>{location}</span></h1><hr className="d-none d-sm-block" />
+            <h1 className="d-none d-sm-block" style={style}>&nbsp;&nbsp;&nbsp;<HiMiniBars3 />&nbsp;&nbsp;&nbsp;{course?.name}&nbsp;&nbsp;&nbsp;<HiArrowRight />&nbsp;&nbsp;&nbsp;<span style={locationStyle}>{location}</span></h1><hr/>
             <CourseNavigation />
-            <div>
                 <div style={moduleStyle} >
                     <Routes>
                         <Route path="/" element={<Navigate to="Home" />} />
@@ -31,7 +29,6 @@ function Courses() {
                         <Route path="People" element={<h1>People</h1>} />
                     </Routes>
                 </div>
-            </div>
         </div>
     );
 }
