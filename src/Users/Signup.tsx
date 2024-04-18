@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as client from "./client";
-import { number } from "zod";
 export default function Signup() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ _id: "", username: "", password: "" });
